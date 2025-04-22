@@ -1,22 +1,10 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import './globals.css'
 
 export const metadata = {
-  title: "SOOSUNG 일정 앱",
-  description: "직원 일정 관리용 PWA 앱",
-  themeColor: "#2563eb", // <- 이거 꼭 넣기
-};
+  title: 'SOOSUNG 일정 앱',
+  description: '직원 일정 관리',
+  themeColor: '#2563eb',
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -28,5 +16,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>{children}</body>
     </html>
-  );
+  )
 }
