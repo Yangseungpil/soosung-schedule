@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-import './globals.css';
-=======
 import './globals.css'
 
 export const metadata = {
@@ -8,16 +5,10 @@ export const metadata = {
   description: '직원 일정 관리',
   themeColor: '#2563eb',
 }
->>>>>>> c425896ebb6aa5cac1e78226dba0c5f612d00537
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-<<<<<<< HEAD
-      <body>{children}</body>
-    </html>
-  );
-=======
       <head>
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href="/icon-192.png" />
@@ -26,5 +17,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>{children}</body>
     </html>
   )
->>>>>>> c425896ebb6aa5cac1e78226dba0c5f612d00537
 }
