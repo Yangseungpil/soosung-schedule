@@ -1,26 +1,16 @@
 {
-<<<<<<< HEAD
-  "name": "project-schedule",
-=======
   "name": "soosung-schedule",
->>>>>>> c425896ebb6aa5cac1e78226dba0c5f612d00537
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-<<<<<<< HEAD
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "file-saver": "^2.0.5",
-=======
     "lint": "next lint",
     "export": "next export"
   },
   "dependencies": {
->>>>>>> c425896ebb6aa5cac1e78226dba0c5f612d00537
+    "file-saver": "^2.0.5",
     "next": "15.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -30,15 +20,9 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-<<<<<<< HEAD
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.3",
     "tailwindcss": "^4.1.4",
-=======
-    "tailwindcss": "^4",
-    "postcss": "^8",
-    "autoprefixer": "^10",
->>>>>>> c425896ebb6aa5cac1e78226dba0c5f612d00537
+    "postcss": "^8.5.3",
+    "autoprefixer": "^10.4.21",
     "typescript": "^5"
   }
 }
