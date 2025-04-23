@@ -16,7 +16,7 @@ const 관리프로젝트들 = [
   '부천대장(설계 PM)', '고양일산테크노밸리(설계 PM)', '효행지구(도화 PM)', '밀레니엄타운(KG PM)'
 ];
 
-const fontColor = (text) => /설계 PM|계획 PM/.test(text) ? 'text-blue-500' : 'text-black';
+const fontColor = (text: string) => /설계 PM|계획 PM/.test(text) ? 'text-blue-500' : 'text-black';
 const 담당자들 = ['황인호 차장', '함다올 과장', '박건희 대리', '김성환 사원', '양형준 사원'];
 const 특이사항옵션 = ['감독 전화 요망', '출장 후 복귀 요망', '야근 요망', '기타 입력'];
 
@@ -27,8 +27,8 @@ export default function ProjectSchedule() {
   const [date, setDate] = useState('');
   const [note, setNote] = useState('');
   const [customNote, setCustomNote] = useState('');
-  const [editingIndex, setEditingIndex] = useState(null);
-  const [schedule, setSchedule] = useState([]);
+  const [editingIndex, setEditingIndex] = useState<number | null>(null);
+  const [schedule, setSchedule] = useState<any[]>([]);
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
@@ -62,11 +62,11 @@ export default function ProjectSchedule() {
     }
   };
 
-  const deleteSchedule = (index) => {
+  const deleteSchedule = (index: number) => {
     setSchedule(schedule.filter((_, i) => i !== index));
   };
 
-  const editSchedule = (index) => {
+  const editSchedule = (index: number) => {
     const entry = schedule[index];
     setProjectJ(진행프로젝트들.includes(entry.project) ? entry.project : '');
     setProjectM(관리프로젝트들.includes(entry.project) ? entry.project : '');
