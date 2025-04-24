@@ -1,7 +1,11 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  output: "export", // static export 사용 시 필요한 설정
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    css: {
+      // lightningcss 비활성화
+      loader: 'postcss'
+    }
+  }
 };
 
-export default nextConfig;
+module.exports = nextConfig;
