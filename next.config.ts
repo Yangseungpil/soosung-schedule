@@ -2,10 +2,9 @@
 const nextConfig = {
   experimental: {
     css: {
-      // lightningcss 비활성화
-      loader: 'postcss'
-    }
-  }
+      loader: 'postcss', // lightningcss 대신 postcss 사용
+    },
+  },
 };
 
 module.exports = nextConfig;
