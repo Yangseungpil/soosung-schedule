@@ -1,3 +1,4 @@
+// layout.tsx
 import './globals.css'
 
 export const metadata = {
@@ -9,12 +10,8 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko">
-      <head>
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" href="/icon-192.png" />
-        <meta name="theme-color" content="#2563eb" />
-      </head>
-      <body>{children}</body>
+      <head />
+      <body className="bg-gray-100 text-gray-900 min-h-screen">{children}</body>
     </html>
-  )
+  );
 }

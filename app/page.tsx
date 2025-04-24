@@ -1,10 +1,10 @@
 "use client";
 
-import ProjectSchedule from '../components/ProjectSchedule';
+import ProjectSchedule from "@/components/ProjectSchedule";
 
 export default function Home() {
   return (
-    <main className="p-4">
+    <main className="min-h-screen bg-white">
       <ProjectSchedule />
     </main>
   );

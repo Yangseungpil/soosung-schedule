@@ -17,13 +17,12 @@ const 관리프로젝트들 = [
 ];
 
 const fontColor = (text: string) => /설계 PM|계획 PM/.test(text) ? 'text-blue-500' : 'text-black';
-const 담당자들 = ['황인호 차장', '함다올 과장', '박건희 대리', '김성환 사원', '양형준 사원'];
-const 특이사항옵션 = ['감독 전화 요망', '출장 후 복귀 요망', '야근 요망', '기타 입력'];
 
 export default function ProjectSchedule() {
   const [projectJ, setProjectJ] = useState('');
   const [projectM, setProjectM] = useState('');
   const [manager, setManager] = useState('');
+  const [avatar, setAvatar] = useState('');
   const [date, setDate] = useState('');
   const [note, setNote] = useState('');
   const [customNote, setCustomNote] = useState('');
@@ -44,7 +43,7 @@ export default function ProjectSchedule() {
     const project = projectJ || projectM;
     if (project && manager && date) {
       const finalNote = note === '기타 입력' ? customNote : note;
-      const newEntry = { project, manager, date, note: finalNote };
+      const newEntry = { project, manager, avatar, date, note: finalNote };
       if (editingIndex !== null) {
         const updated = [...schedule];
         updated[editingIndex] = newEntry;
@@ -56,6 +55,7 @@ export default function ProjectSchedule() {
       setProjectJ('');
       setProjectM('');
       setManager('');
+      setAvatar('');
       setDate('');
       setNote('');
       setCustomNote('');
@@ -71,6 +71,7 @@ export default function ProjectSchedule() {
     setProjectJ(진행프로젝트들.includes(entry.project) ? entry.project : '');
     setProjectM(관리프로젝트들.includes(entry.project) ? entry.project : '');
     setManager(entry.manager);
+    setAvatar(entry.avatar || '');
     setDate(entry.date);
     setNote(entry.note);
     setCustomNote(entry.note);
@@ -101,13 +102,17 @@ export default function ProjectSchedule() {
           ))}
         </select>
 
-        <label className="font-semibold">담당자</label>
-        <select className="border p-2 rounded w-full" value={manager} onChange={e => setManager(e.target.value)}>
-          <option value="">담당자 선택 (본사)</option>
-          {담당자들.map((name, idx) => (
-            <option key={idx} value={name}>{name}</option>
-          ))}
-        </select>
+        <label className="font-semibold">담당자 이름</label>
+        <input type="text" className="border p-2 rounded w-full" placeholder="예: 홍길동" value={manager} onChange={e => setManager(e.target.value)} />
+
+        <label className="font-semibold">아바타 이미지 URL</label>
+        <input type="text" className="border p-2 rounded w-full" placeholder="https://example.com/avatar.jpg" value={avatar} onChange={e => setAvatar(e.target.value)} />
+
+        {avatar && (
+          <div className="flex justify-center mt-2">
+            <img src={avatar} alt="avatar" className="w-16 h-16 rounded-full border shadow" />
+          </div>
+        )}
 
         <label className="font-semibold">날짜</label>
         <input type="date" className="border p-2 rounded w-full" value={date} onChange={e => setDate(e.target.value)} />
@@ -115,10 +120,12 @@ export default function ProjectSchedule() {
         <label className="font-semibold">업무 및 특이사항</label>
         <select className="border p-2 rounded w-full" value={note} onChange={e => setNote(e.target.value)}>
           <option value="">특이사항 선택</option>
-          {특이사항옵션.map((opt, idx) => (
-            <option key={idx} value={opt}>{opt}</option>
-          ))}
+          <option value="감독 전화 요망">감독 전화 요망</option>
+          <option value="출장 후 복귀 요망">출장 후 복귀 요망</option>
+          <option value="야근 요망">야근 요망</option>
+          <option value="기타 입력">기타 입력</option>
         </select>
+
         {note === '기타 입력' && (
           <input
             type="text"
@@ -128,6 +135,7 @@ export default function ProjectSchedule() {
             onChange={e => setCustomNote(e.target.value)}
           />
         )}
+
         <button onClick={addSchedule} className="bg-blue-500 text-white p-2 rounded w-full">
           {editingIndex !== null ? '일정 수정' : '일정 추가'}
         </button>
@@ -144,7 +152,10 @@ export default function ProjectSchedule() {
         />
         {filteredSchedule.map((item, idx) => (
           <div key={idx} className="flex justify-between items-center p-2 border rounded mb-2">
-            <span className={`${fontColor(item.project)} font-medium`}>{item.project}</span>
+            <div className="flex items-center gap-2">
+              {item.avatar && <img src={item.avatar} alt="avatar" className="w-10 h-10 rounded-full border" />}
+              <span className={`${fontColor(item.project)} font-medium`}>{item.project}</span>
+            </div>
             <span>{item.manager}</span>
             <span>{item.date}</span>
             <span>{item.note}</span>
