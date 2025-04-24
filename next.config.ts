@@ -1,10 +1,7 @@
+// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    css: {
-      loader: 'postcss', // lightningcss 대신 postcss 사용
-    },
-  },
+  // 특별한 설정 없이 비워도 됩니다
 };
 
 module.exports = nextConfig;
