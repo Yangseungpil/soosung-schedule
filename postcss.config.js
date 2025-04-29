@@ -1,7 +1,9 @@
-// postcss.config.js
+// postcss.config.js (프로젝트 루트)
 module.exports = {
-  plugins: [
-    require('@tailwindcss/postcss')(), // 👈 이렇게 함수 형태!
-    require('autoprefixer'),
-  ],
+  plugins: {
+    // Tailwind용 PostCSS 플러그인(별도 패키지 이름)
+    '@tailwindcss/postcss': {},
+    // Autoprefixer
+    autoprefixer: {},
+  },
 };
